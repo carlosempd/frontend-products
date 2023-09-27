@@ -37,4 +37,8 @@ export class ProductService {
       params
     );
   }
+
+  deleteProduct(id: string) {
+    return this.apiService.softDelete(`${ environment.apiUrl }/products/${ id }`);
+  }
 }

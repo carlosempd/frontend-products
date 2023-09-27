@@ -64,4 +64,14 @@ export class ProductsListComponent implements OnInit, AfterViewInit {
   loadData(products: Product[]) {
     this.datasource = new MatTableDataSource<Product>(products);
   }
+
+  delete(elementId: string) {
+    this.loadingData = true;
+    this.productService.deleteProduct(elementId)
+      .subscribe(res => {
+        this.loadingData = false;
+        this.products = this.datasource.data.filter(el => el._id !== elementId)
+        this.datasource = new MatTableDataSource<Product>(this.products);
+      })
+  }
 }

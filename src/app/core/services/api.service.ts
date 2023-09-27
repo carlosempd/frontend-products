@@ -20,4 +20,8 @@ export class ApiService {
 			{ params: p, headers }
 		)
 	}
+
+  softDelete(path: string): Observable<any> {
+    return this.http.delete(path);
+  }
 }
