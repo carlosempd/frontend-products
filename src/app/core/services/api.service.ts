@@ -14,9 +14,10 @@ export class ApiService {
     params?: HttpParams,
     headers?: HttpHeaders
   ): Observable<any> {
+    const p = new HttpParams({ fromString: params?.toString() });
 		return this.http.get(
 			path,
-			{ params, headers }
+			{ params: p, headers }
 		)
 	}
 }
