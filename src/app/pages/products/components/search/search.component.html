@@ -1,0 +1,21 @@
+<section class="search-container w-full">
+    <form [formGroup]="searchForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+                matInput
+                type="text"
+                placeholder="Search by name"
+                formControlName="name">
+            <button 
+                *ngIf="searchForm.get('name')?.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+                (click)="searchForm.get('name')?.reset();">
+                <mat-icon>close</mat-icon>
+            </button>
+            <mat-icon *ngIf="!searchForm.get('name')?.value" matSuffix>search</mat-icon>
+        </mat-form-field>
+    </form>
+</section>
