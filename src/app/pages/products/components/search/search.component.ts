@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable, debounceTime, distinctUntilChanged, map } from 'rxjs';
+import { Observable, debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -22,6 +22,7 @@ export class SearchComponent implements OnInit {
 
     this.searchText$ = this.searchForm.valueChanges
       .pipe(
+        startWith(''),
         debounceTime(400),
         map(val => val.name),
         distinctUntilChanged()
