@@ -15,7 +15,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit {
   loadingData = false;
   products: Product[] = [];
   datasource: MatTableDataSource<Product>;
-  displayedColumns: string[] = ['image', 'name', 'price', 'sku'];
+  displayedColumns: string[] = ['image', 'name', 'price', 'sku', 'action'];
   resultsLength = 0;
   search$: Observable<string>;
   products$: Observable<Product[]>;

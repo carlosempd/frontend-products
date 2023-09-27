@@ -34,6 +34,16 @@ mat-paginator {
 	margin-top: 10px;
 }
 
+.mdc-fab--mini {
+	width: 30px;
+    height: 30px;
+	text-align: center;
+	mat-icon {
+		font-size: 15px;
+		margin-top: 10px;
+	}
+}
+
 .loading-shade {
 	position: absolute;
 	top: 0;
@@ -45,4 +55,11 @@ mat-paginator {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.action-icons {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	align-items: center;
 }
