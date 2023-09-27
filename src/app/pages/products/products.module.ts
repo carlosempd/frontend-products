@@ -10,12 +10,16 @@ import { SearchComponent } from './components/search/search.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-
+import { ProductsListComponent } from './components/products-list/products-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     ProductsComponent,
-    SearchComponent
+    SearchComponent,
+    ProductsListComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,10 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ]
 })
 export class ProductsModule { }
