@@ -1,0 +1,95 @@
+<section class="dialog-container">
+    <h1 mat-dialog-title>Product detail</h1>
+
+    <mat-dialog-content>
+        <form
+            [formGroup]="productForm"
+            class="form-container">
+            <div class="form-column">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input
+                        matInput
+                        type="text"
+                        placeholder="Product name"
+                        formControlName="name">
+                    <mat-error *ngIf="productForm.get('name')?.hasError('required')">
+                        Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Stock</mat-label>
+                    <input
+                        matInput
+                        placeholder="Product stock"
+                        formControlName="stock">
+                    <mat-error *ngIf="productForm.get('stock')?.hasError('required')">
+                        Stock is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <textarea
+                        formControlName="description"
+                        matInput
+                        placeholder="Product description">
+                    </textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="form-column">
+                <mat-form-field>
+                    <mat-label>Price</mat-label>
+                    <input
+                        matInput
+                        placeholder="Product price"
+                        formControlName="price">
+                    <mat-error *ngIf="productForm.get('price')?.hasError('required')">
+                        Price is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>SKU</mat-label>
+                    <input
+                        matInput
+                        type="text"
+                        placeholder="Product sku"
+                        formControlName="sku">
+                    <mat-error *ngIf="productForm.get('sku')?.hasError('required')">
+                        SKU is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Image URL</mat-label>
+                    <input
+                        matInput
+                        type="text"
+                        placeholder="Product image"
+                        formControlName="image">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Tags</mat-label>
+                    <input
+                        matInput
+                        type="text"
+                        placeholder="Product image"
+                        formControlName="tags">
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>
+            Close
+        </button>
+        <button
+            (click)="submit()"
+            class="draft-btn"
+            color="primary"
+            mat-raised-button>
+            Create
+        </button>
+    </mat-dialog-actions>
+</section>

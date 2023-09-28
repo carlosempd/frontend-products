@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateProductDialogComponent } from './components/create-product-dialog/create-product-dialog.component';
 
 @Component({
   selector: 'app-products',
@@ -7,14 +8,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-  search$: Observable<string>;
 
-  loadSearch($event: Observable<string>) {
-    this.search$ = $event;
-    this.search$.subscribe(res => {
-      console.log('SC', res);
-      
-    })
+  constructor(
+    public dialog: MatDialog,
+  ) {}
+  openCreateProductDialog() {
+    this.dialog.open(CreateProductDialogComponent);
   }
 
 }

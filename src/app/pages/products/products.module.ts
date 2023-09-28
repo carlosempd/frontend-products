@@ -16,13 +16,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CreateProductDialogComponent } from './components/create-product-dialog/create-product-dialog.component';
 
 @NgModule({
   declarations: [
     ProductsComponent,
     SearchComponent,
     ProductsListComponent,
-    ProductDetailDialogComponent
+    ProductDetailDialogComponent,
+    CreateProductDialogComponent
   ],
   imports: [
     CommonModule,

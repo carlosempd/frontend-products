@@ -35,7 +35,7 @@ export class ApiService {
   post(path: string, body: object = {}): Observable<any> {
     return this.http.post(
         path,
-        JSON.stringify(body)
+        body
     );
   }
 }

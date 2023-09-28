@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { PaginatedResponse, Pagination } from '../interfaces/response.interface';
-import { Product } from '../interfaces/product.interface';
+import { Product, ProductBody } from '../interfaces/product.interface';
 import { environment } from 'src/environments/environment';
 import { HttpParams } from '@angular/common/http';
 
@@ -59,6 +59,13 @@ export class ProductService {
   updateProduct(id: string, body: Object) {
     return this.apiService.put(
       `${ environment.apiUrl }/products/${ id }`,
+      body
+    )
+  }
+
+  create(body: ProductBody) {
+    return this.apiService.post(
+      `${ environment.apiUrl }/products`,
       body
     )
   }
