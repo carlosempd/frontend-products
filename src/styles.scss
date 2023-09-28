@@ -2,3 +2,60 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1, h2, h3, h4, h5, h6, p {
+    font-weight: 300 !important;
+}
+
+
+w-full {
+    width: 100%;
+}
+
+
+// Dialog Styles
+.dialog-container {
+    padding: 15px;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+// Toast styles
+.mat-mdc-dialog-actions {
+    justify-content: center;
+}
+
+.mat-mdc-snack-bar-container {
+    &.toast {
+        margin-bottom: 20px;
+        --mdc-snackbar-supporting-text-size: 16px;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+    }   
+}
+
+.default-mat-snack-bar-container {
+    --mdc-snackbar-container-color: rgba(221, 201, 201, 0.805);
+}
+
+.success-mat-snack-bar-container {
+    --mdc-snackbar-container-color: rgba(47, 194, 47, 0.677) !important;
+    @extend .toast;
+}
+
+.error-mat-snack-bar-container {
+    --mdc-snackbar-container-color: rgba(194, 47, 47, 0.677) !important;
+    @extend .toast;
+}
