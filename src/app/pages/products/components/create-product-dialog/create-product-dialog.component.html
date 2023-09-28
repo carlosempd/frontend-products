@@ -26,6 +26,9 @@
                     <mat-error *ngIf="productForm.get('stock')?.hasError('required')">
                         Stock is <strong>required</strong>
                     </mat-error>
+                    <mat-error *ngIf="productForm.get('stock')?.hasError('pattern')">
+                        Stock must be a valid number 
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Description</mat-label>
@@ -46,6 +49,9 @@
                         formControlName="price">
                     <mat-error *ngIf="productForm.get('price')?.hasError('required')">
                         Price is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="productForm.get('price')?.hasError('pattern')">
+                        Price must be a valid number 
                     </mat-error>
                 </mat-form-field>
 

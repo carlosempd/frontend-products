@@ -23,9 +23,9 @@ export class CreateProductDialogComponent {
     this.productForm = this.FormBuilder.group({
       name : ['', Validators.required],
       description: [''],
-      price: ['', Validators.required],
+      price: ['', [ Validators.required, Validators.pattern(/^\d+(\.\d+)?$/) ]],
       sku: ['', Validators.required],
-      stock: ['', Validators.required],
+      stock: ['', [ Validators.required, Validators.pattern("^[0-9]*$") ]],
       image: [''],
       tags: ['']
     });

@@ -20,6 +20,9 @@
                         matInput
                         placeholder="Product stock"
                         formControlName="stock">
+                        <mat-error *ngIf="productForm.get('stock')?.hasError('pattern')">
+                            Stock must be a valid number 
+                        </mat-error>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Description</mat-label>
@@ -38,6 +41,9 @@
                         matInput
                         placeholder="Product price"
                         formControlName="price">
+                        <mat-error *ngIf="productForm.get('price')?.hasError('pattern')">
+                            Price must be a valid number 
+                        </mat-error>
                 </mat-form-field>
 
                 <mat-form-field>

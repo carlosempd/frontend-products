@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Product } from 'src/app/core/interfaces/product.interface';
 import { ProductService } from 'src/app/core/services/product.service';
@@ -25,9 +25,9 @@ export class ProductDetailDialogComponent implements OnInit {
     this.productForm = this.FormBuilder.group({
       name : [this.data?.product?.name],
       description: [this.data?.product?.description],
-      price: [this.data?.product?.price],
+      price: [this.data?.product?.price, [ Validators.required, Validators.pattern(/^\d+(\.\d+)?$/) ]],
       sku: [this.data?.product?.sku],
-      stock: [this.data?.product?.stock],
+      stock: [this.data?.product?.stock, [ Validators.required, Validators.pattern("^[0-9]*$") ]],
       image: [this.data?.product?.image],
       tags: [this.data?.product?.tags]
     });
