@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Product } from 'src/app/core/interfaces/product.interface';
 import { ProductService } from 'src/app/core/services/product.service';
+import { UtilService } from 'src/app/core/services/util.service';
 
 @Component({
   selector: 'app-product-detail-dialog',
@@ -17,7 +18,8 @@ export class ProductDetailDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ProductDetailDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { product: Product, edit: boolean },
     private productService: ProductService,
-    private FormBuilder: FormBuilder
+    private FormBuilder: FormBuilder,
+    private utilService: UtilService
   ) {}
   ngOnInit(): void {
     this.productForm = this.FormBuilder.group({
@@ -48,6 +50,16 @@ export class ProductDetailDialogComponent implements OnInit {
         this.productForm.value
       ).subscribe(res => {
         this.closeDialog()
+        this.utilService.showSnackbar(
+          'Product updated succesfully'
+        )
+      }, err => {
+        this.utilService.showSnackbar(
+          'An error ocurred, please try again',
+          'Ok',
+          1500,
+          'error'
+        )
       })
     }
   }

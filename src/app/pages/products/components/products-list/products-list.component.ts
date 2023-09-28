@@ -7,6 +7,7 @@ import { Product } from 'src/app/core/interfaces/product.interface';
 import { PaginatedResponse, Pagination } from 'src/app/core/interfaces/response.interface';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ProductDetailDialogComponent } from '../product-detail-dialog/product-detail-dialog.component';
+import { UtilService } from 'src/app/core/services/util.service';
 
 @Component({
   selector: 'app-products-list',
@@ -28,6 +29,7 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private productService: ProductService,
+    private utilService: UtilService,
     public dialog: MatDialog,
   ) {}
 
@@ -51,6 +53,13 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
         })
       ).subscribe((res: Product[]) => {
         this.loadData(res);
+      }, err => {
+        this.utilService.showSnackbar(
+          'An error ocurred, please try again!',
+          'Ok',
+          1500,
+          'error'
+        );
       })
     );
 
@@ -61,6 +70,13 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
           this.loadingData = false;
           this.resultsLength = res.totalCount;
           this.loadData(res.data);
+        }, err => {
+          this.utilService.showSnackbar(
+            'Data not fetched, please try again!',
+            'Ok',
+            1500,
+            'error'
+          );
         })
     )
   }
@@ -92,7 +108,17 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.productService.deleteProduct(elementId)
       .subscribe(res => {
         this.loadingData = false;
+        this.utilService.showSnackbar(
+          'Product deleted!',
+        );
         this.productService.fetchNewProducts();
+      }, err => {
+        this.utilService.showSnackbar(
+          'An error ocurred, please try again!',
+          'Ok',
+          1500,
+          'error'
+        );
       })
   }
 

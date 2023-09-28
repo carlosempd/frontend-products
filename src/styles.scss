@@ -32,6 +32,30 @@ w-full {
     gap: 15px;
 }
 
+// Toast styles
 .mat-mdc-dialog-actions {
     justify-content: center;
+}
+
+.mat-mdc-snack-bar-container {
+    &.toast {
+        margin-bottom: 20px;
+        --mdc-snackbar-supporting-text-size: 16px;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+    }   
+}
+
+.default-mat-snack-bar-container {
+    --mdc-snackbar-container-color: rgba(221, 201, 201, 0.805);
+}
+
+.success-mat-snack-bar-container {
+    --mdc-snackbar-container-color: rgba(47, 194, 47, 0.677) !important;
+    @extend .toast;
+}
+
+.error-mat-snack-bar-container {
+    --mdc-snackbar-container-color: rgba(194, 47, 47, 0.677) !important;
+    @extend .toast;
 }

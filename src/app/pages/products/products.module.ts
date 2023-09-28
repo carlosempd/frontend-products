@@ -7,6 +7,7 @@ import { ProductsComponent } from './products.component';
 import { ToolbarModule } from 'src/app/shared/components/toolbar/toolbar.module';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailDialogComponent } from './components/product-detail-dialog/product-detail-dialog.component';
+import { CreateProductDialogComponent } from './components/create-product-dialog/create-product-dialog.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,7 +17,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
-import { CreateProductDialogComponent } from './components/create-product-dialog/create-product-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { CreateProductDialogComponent } from './components/create-product-dialog
     MatTableModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ]
 })
 export class ProductsModule { }
