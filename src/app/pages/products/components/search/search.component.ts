@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
 
     this.productService.searchText$ = this.searchForm.valueChanges
       .pipe(
-        startWith(''),
+        // startWith(''),
         debounceTime(400),
         map(val => val.name),
         distinctUntilChanged()
