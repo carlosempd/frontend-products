@@ -24,4 +24,18 @@ export class ApiService {
   softDelete(path: string): Observable<any> {
     return this.http.delete(path);
   }
+
+  put(path: string, body: object = {}): Observable<any> {
+    return this.http.put(
+      path,
+      body
+    );
+  }
+
+  post(path: string, body: object = {}): Observable<any> {
+    return this.http.post(
+        path,
+        JSON.stringify(body)
+    );
+  }
 }

@@ -55,4 +55,11 @@ export class ProductService {
   deleteProduct(id: string) {
     return this.apiService.softDelete(`${ environment.apiUrl }/products/${ id }`);
   }
+
+  updateProduct(id: string, body: Object) {
+    return this.apiService.put(
+      `${ environment.apiUrl }/products/${ id }`,
+      body
+    )
+  }
 }

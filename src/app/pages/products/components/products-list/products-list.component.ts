@@ -1,10 +1,12 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subscription, map, switchMap, tap } from 'rxjs';
 import { Product } from 'src/app/core/interfaces/product.interface';
 import { PaginatedResponse, Pagination } from 'src/app/core/interfaces/response.interface';
 import { ProductService } from 'src/app/core/services/product.service';
+import { ProductDetailDialogComponent } from '../product-detail-dialog/product-detail-dialog.component';
 
 @Component({
   selector: 'app-products-list',
@@ -12,7 +14,7 @@ import { ProductService } from 'src/app/core/services/product.service';
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
-  loadingData = false;
+  loadingData = true;
   products: Product[] = [];
   datasource: MatTableDataSource<Product>;
   displayedColumns: string[] = ['image', 'name', 'price', 'sku', 'action'];
@@ -25,7 +27,8 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
   subscription: Subscription = new Subscription();
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    public dialog: MatDialog,
   ) {}
 
   ngOnDestroy(): void {
@@ -53,11 +56,12 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Data stream to load data normally
     this.subscription.add(
-      this.productsFetch$.subscribe((res: PaginatedResponse) => {
-        this.loadingData = false;
-        this.resultsLength = res.totalCount;
-        this.loadData(res.data);
-      })
+      this.productsFetch$
+        .subscribe((res: PaginatedResponse) => {
+          this.loadingData = false;
+          this.resultsLength = res.totalCount;
+          this.loadData(res.data);
+        })
     )
   }
 
@@ -90,5 +94,21 @@ export class ProductsListComponent implements OnInit, AfterViewInit, OnDestroy {
         this.loadingData = false;
         this.productService.fetchNewProducts();
       })
+  }
+
+  openDetail(product: Product, edit = false) {
+    const dialogRef = this.dialog.open(ProductDetailDialogComponent,{
+      data: {
+        product,
+        edit
+      },
+      enterAnimationDuration: '250ms',
+      exitAnimationDuration: '250ms'
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadingData = true;
+      this.productService.fetchNewProducts();
+    })
   }
 }
