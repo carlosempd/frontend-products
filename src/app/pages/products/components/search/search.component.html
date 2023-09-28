@@ -1,7 +1,11 @@
 <section class="search-container w-full">
+    <button color="accent" mat-raised-button class="create-btn">
+        <mat-icon>add_circle</mat-icon>
+        Create product
+    </button>
     <form [formGroup]="searchForm">
         <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
+            <mat-label>Filter</mat-label>
             <input
                 matInput
                 type="text"
@@ -18,4 +22,5 @@
             <mat-icon *ngIf="!searchForm.get('name')?.value" matSuffix>search</mat-icon>
         </mat-form-field>
     </form>
+
 </section>

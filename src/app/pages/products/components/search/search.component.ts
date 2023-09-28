@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable, debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
 import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/core/services/product.service';
 })
 export class SearchComponent implements OnInit {
   searchForm: FormGroup;
+  @Output() createEvt = new EventEmitter()
   
   constructor(
     private formBuilder: FormBuilder,
@@ -27,5 +28,9 @@ export class SearchComponent implements OnInit {
         map(val => val.name),
         distinctUntilChanged()
       );
+  }
+
+  create() {
+    this.createEvt.emit();
   }
 }
