@@ -1,0 +1,23 @@
+.dialog-container {
+    padding: 15px;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    // justify-content: start;
+    // align-items: center;
+    gap: 15px;
+}
+
+.mat-mdc-dialog-actions {
+    justify-content: center;
+}
